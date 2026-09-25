@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Github, Linkedin, Instagram, Send, CheckCircle, AlertCircle, Zap } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
-import { usePortfolio } from '../context/PortfolioContext'
+import { usePortfolio } from '../context/usePortfolio'
 import { submitContact } from '../services/api'
 import { fadeInLeft, fadeInRight } from '../animations/variants'
 
@@ -62,9 +62,9 @@ export default function Contact() {
           {/* Left — info */}
           <motion.div variants={fadeInLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} className="md:col-span-2 space-y-8">
             <div>
-              <h3 className="text-xl font-bold text-white mb-3">Let's build something together</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Let&apos;s build something together</h3>
               <p className="text-slate-400 leading-relaxed text-sm">
-                I'm currently open to new opportunities, freelance projects, and interesting collaborations. If you have an idea or need a developer, reach out!
+                I&apos;m currently open to new opportunities, freelance projects, and interesting collaborations. If you have an idea or need a developer, reach out!
               </p>
             </div>
 
@@ -125,7 +125,7 @@ export default function Contact() {
                   <CheckCircle size={32} className="text-green-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white">Message Sent!</h3>
-                <p className="text-slate-400 text-sm">Thanks for reaching out. I'll get back to you soon.</p>
+                <p className="text-slate-400 text-sm">Thanks for reaching out. I&apos;ll get back to you soon.</p>
                 <button onClick={() => setStatus(null)} className="btn-secondary text-sm px-5 py-2">Send Another</button>
               </div>
             ) : (

@@ -108,7 +108,7 @@ export const textReveal = {
 }
 
 // ── Number counter ────────────────────────────────────
-export const counterVariant = (end) => ({
+export const counterVariant = () => ({
   hidden:  { opacity: 0 },
   visible: {
     opacity: 1,

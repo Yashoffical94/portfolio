@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Mail, Trash2, Eye, CheckCircle, Archive, X, Clock } from 'lucide-react'
-import { getMessages, getMessage, updateMessageStatus, deleteMessage } from '../../services/api'
+import { getMessages, updateMessageStatus, deleteMessage } from '../../services/api'
 import { formatDate } from '../../utils/helpers'
 
 const STATUS_BADGE = {

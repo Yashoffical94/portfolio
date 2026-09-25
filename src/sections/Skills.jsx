@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import SectionHeading from '../components/SectionHeading'
-import { usePortfolio } from '../context/PortfolioContext'
+import { usePortfolio } from '../context/usePortfolio'
 import { staggerContainer, staggerItem } from '../animations/variants'
 import { groupBy } from '../utils/helpers'
 

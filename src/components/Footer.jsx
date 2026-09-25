@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Github, Linkedin, Twitter, Instagram, Mail, Code2, Heart, Youtube } from 'lucide-react'
-import { usePortfolio } from '../context/PortfolioContext'
+import { usePortfolio } from '../context/usePortfolio'
 
 const ICON_MAP = {
   github:    { icon: Github,    label: 'GitHub'    },

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Briefcase, ExternalLink, Calendar, MapPin } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
-import { usePortfolio } from '../context/PortfolioContext'
+import { usePortfolio } from '../context/usePortfolio'
 import { staggerContainer, staggerItem } from '../animations/variants'
 import { formatDateShort } from '../utils/helpers'
 
@@ -45,7 +45,7 @@ export default function Experience() {
             {/* Vertical line */}
             <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-orange-500/50 via-orange-500/20 to-transparent" aria-hidden="true" />
 
-            {experience.map((exp, i) => {
+            {experience.map((exp) => {
               const badge = TYPE_BADGE[exp.type] || TYPE_BADGE.job
               const startFmt = exp.startDate ? formatDateShort(exp.startDate) : ''
               const endFmt   = exp.current ? 'Present' : (exp.endDate ? formatDateShort(exp.endDate) : '')

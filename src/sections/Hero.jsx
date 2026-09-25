@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Instagram, Mail, Zap, Code } from 'lucide-react'
-import { usePortfolio } from '../context/PortfolioContext'
-import { fadeInUp, staggerContainer, staggerItem } from '../animations/variants'
+import { usePortfolio } from '../context/usePortfolio'
 
 // Lightweight canvas particle system — no external deps
 function ParticleCanvas() {
@@ -213,7 +212,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.9 }}
           className="flex items-center gap-8 mb-16 flex-wrap justify-center"
         >
-          {stats.map((s, i) => (
+          {stats.map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-3xl font-black text-gradient-orange">{s.value}</div>
               <div className="text-xs text-slate-500 uppercase tracking-widest mt-1">{s.label}</div>

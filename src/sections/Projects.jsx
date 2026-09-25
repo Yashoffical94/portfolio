@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github, X, ArrowRight, Star } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
-import { usePortfolio } from '../context/PortfolioContext'
+import { usePortfolio } from '../context/usePortfolio'
 import { staggerContainer, staggerItem } from '../animations/variants'
 
 const FALLBACK_PROJECTS = [

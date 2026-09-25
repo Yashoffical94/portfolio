@@ -5,7 +5,7 @@ import {
   LayoutDashboard, User, FolderKanban, Wrench, Briefcase,
   Trophy, Link2, MessageSquare, LogOut, Menu, X, Zap, ExternalLink, Bell
 } from 'lucide-react'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../context/useAuth'
 
 // Lazy sub-sections of admin
 import AdminOverview     from '../../components/admin/AdminOverview'

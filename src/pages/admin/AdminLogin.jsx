@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Lock, Mail, Eye, EyeOff, Zap, AlertCircle } from 'lucide-react'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../context/useAuth'
 
 export default function AdminLogin() {
   const { login, isAuthenticated, loading } = useAuth()

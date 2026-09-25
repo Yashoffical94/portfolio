@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { MapPin, Briefcase, Target, Coffee, ArrowRight } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
-import { usePortfolio } from '../context/PortfolioContext'
+import { usePortfolio } from '../context/usePortfolio'
 import { staggerContainer, staggerItem, fadeInLeft, fadeInRight } from '../animations/variants'
 
 const JOURNEY_STEPS = [
@@ -65,7 +65,7 @@ export default function About() {
             </h3>
             <p className="text-slate-400 leading-relaxed text-lg">{bio}</p>
             <p className="text-slate-400 leading-relaxed">
-              I don't just learn technology — I build things with it. Whether it's a full-stack web app, an AI-powered tool, or an open-source contribution, I'm always working on something.
+              I don&apos;t just learn technology — I build things with it. Whether it&apos;s a full-stack web app, an AI-powered tool, or an open-source contribution, I&apos;m always working on something.
             </p>
             <div className="flex flex-col gap-3 pt-2">
               <div className="flex items-center gap-3 text-slate-400 text-sm">

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import { createContext, useState, useEffect, useCallback } from 'react'
 import {
   getProfile, getProjects, getSkills,
   getExperience, getAchievements, getSocials
@@ -78,8 +78,4 @@ export function PortfolioProvider({ children }) {
   )
 }
 
-export const usePortfolio = () => {
-  const ctx = useContext(PortfolioContext)
-  if (!ctx) throw new Error('usePortfolio must be used within PortfolioProvider')
-  return ctx
-}
+export { PortfolioContext }
