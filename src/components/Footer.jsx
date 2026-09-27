@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Github, Linkedin, Twitter, Instagram, Mail, Code2, Heart, Youtube } from 'lucide-react'
+import { Github, Linkedin, Twitter, Instagram, Mail, Heart, Youtube } from 'lucide-react'
 import { usePortfolio } from '../context/usePortfolio'
+import Logo from './Logo'
 
 const ICON_MAP = {
   github:    { icon: Github,    label: 'GitHub'    },
@@ -34,9 +35,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center">
-                <Code2 size={16} className="text-white" />
-              </div>
+              <Logo size={32} className="rounded-lg shadow-orange-sm" />
               <span className="font-bold text-white text-lg">{name}<span className="text-orange-500">.</span></span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs">

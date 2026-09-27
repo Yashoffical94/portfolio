@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Instagram, Mail, Zap, Code } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Instagram, Mail, Zap, Code, Volume2, VolumeX } from 'lucide-react'
 import { usePortfolio } from '../context/usePortfolio'
 
 // Lightweight canvas particle system — no external deps
@@ -90,6 +90,67 @@ function AuraRings() {
 
 const SOCIAL_ICONS = { github: Github, linkedin: Linkedin, instagram: Instagram, email: Mail }
 
+/**
+ * Hero background audio — starts on the user's first interaction
+ * (browsers block autoplay with sound). Toggle button bottom-right.
+ * Audio file: /assets/hero-audio.mp3 (drop the file in public/assets/).
+ */
+function HeroAudio() {
+  const audioRef  = useRef(null)
+  const [on, setOn] = useState(false)
+  const [supported] = useState(() => true) // flip to false if no file yet
+
+  const tryPlay = () => {
+    const a = audioRef.current
+    if (!a) return
+    a.volume = 0.45
+    a.play()
+      .then(() => setOn(true))
+      .catch(() => {}) // still blocked — user can use the toggle
+  }
+
+  useEffect(() => {
+    // first click/keypress anywhere unlocks audio playback
+    window.addEventListener('pointerdown', tryPlay, { once: true })
+    window.addEventListener('keydown', tryPlay, { once: true })
+    return () => {
+      window.removeEventListener('pointerdown', tryPlay)
+      window.removeEventListener('keydown', tryPlay)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const toggle = () => {
+    const a = audioRef.current
+    if (!a) return
+    if (on) {
+      a.pause()
+      setOn(false)
+    } else {
+      a.volume = 0.45
+      a.play().then(() => setOn(true)).catch(() => {})
+    }
+  }
+
+  if (!supported) return null
+
+  return (
+    <>
+      <audio ref={audioRef}        src="/assets/hero-audio.m4a" loop preload="none" />
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4 }}
+        onClick={toggle}
+        aria-label={on ? 'Mute background music' : 'Play background music'}
+        className="absolute bottom-10 right-6 md:right-10 z-20 p-3 rounded-full glass border border-white/10 text-slate-300 hover:text-orange-400 hover:border-orange-500/40 transition-all duration-300"
+      >
+        {on ? <Volume2 size={18} /> : <VolumeX size={18} />}
+      </motion.button>
+    </>
+  )
+}
+
 export default function Hero() {
   const { profile, socials } = usePortfolio()
 
@@ -108,8 +169,25 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Space background */}
-      <div className="absolute inset-0 bg-space-900" />
+      {/* Video background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/assets/hero-bg-balanced.web.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      />
+
+      {/* Dark overlay for text readability (keeps the space theme) */}
+      <div className="absolute inset-0 bg-space-900/75" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'linear-gradient(180deg, rgba(5,8,22,0.85) 0%, rgba(5,8,22,0.55) 45%, rgba(5,8,22,0.9) 100%)' }}
+        aria-hidden="true"
+      />
 
       {/* Radial hero glow */}
       <div
@@ -275,6 +353,9 @@ export default function Hero() {
           <ArrowDown size={18} />
         </motion.div>
       </motion.div>
+
+      {/* Background audio + sound toggle */}
+      <HeroAudio />
     </section>
   )
 }

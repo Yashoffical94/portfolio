@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Code2, Zap } from 'lucide-react'
+import { Menu, X, Zap } from 'lucide-react'
 import { useScrollSpy } from '../hooks/useScrollSpy'
 import { cn } from '../utils/helpers'
+import Logo from './Logo'
 
 const NAV_LINKS = [
   { label: 'Home',         href: '/#hero'         },
@@ -61,11 +62,9 @@ export default function Navbar() {
         <nav className="flex items-center justify-between h-16 md:h-18">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2.5 group">
             <div className="relative">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center shadow-orange-sm group-hover:shadow-orange-md transition-all duration-300">
-                <Code2 size={16} className="text-white" />
-              </div>
+              <Logo size={34} className="rounded-lg shadow-orange-sm group-hover:shadow-orange-md transition-all duration-300" />
               <div className="absolute inset-0 rounded-lg bg-orange-500/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <span className="font-bold text-white text-lg tracking-tight">
