@@ -28,10 +28,11 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 // Logging
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
-// Rate limiting — general
+// Rate limiting — general (relaxed in development so testing isn't blocked)
+const IS_DEV = process.env.NODE_ENV === 'development'
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: IS_DEV ? 1000 : 100,
   message: { success: false, message: 'Too many requests, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
@@ -40,7 +41,7 @@ const generalLimiter = rateLimit({
 // Strict limiter for auth + contact
 const strictLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  max: IS_DEV ? 100 : 5,
   message: { success: false, message: 'Too many attempts, please try again in 15 minutes.' },
   standardHeaders: true,
   legacyHeaders: false,

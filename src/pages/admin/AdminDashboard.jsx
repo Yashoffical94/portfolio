@@ -3,7 +3,7 @@ import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard, User, FolderKanban, Wrench, Briefcase,
-  Trophy, Link2, MessageSquare, LogOut, Menu, X, Zap, ExternalLink, Bell
+  Trophy, Link2, MessageSquare, LogOut, Menu, X, Zap, ExternalLink, Bell, Settings
 } from 'lucide-react'
 import { useAuth } from '../../context/useAuth'
 
@@ -16,6 +16,7 @@ import AdminExperience   from '../../components/admin/AdminExperience'
 import AdminAchievements from '../../components/admin/AdminAchievements'
 import AdminSocials      from '../../components/admin/AdminSocials'
 import AdminMessages     from '../../components/admin/AdminMessages'
+import AdminSettings     from '../../components/admin/AdminSettings'
 
 const NAV = [
   { icon: LayoutDashboard, label: 'Overview',     path: ''            },
@@ -26,6 +27,7 @@ const NAV = [
   { icon: Trophy,          label: 'Achievements', path: 'achievements'},
   { icon: Link2,           label: 'Social Links', path: 'socials'     },
   { icon: MessageSquare,   label: 'Messages',     path: 'messages'    },
+  { icon: Settings,        label: 'Settings',     path: 'settings'    },
 ]
 
 function Sidebar({ collapsed, setCollapsed }) {
@@ -158,6 +160,7 @@ export default function AdminDashboard() {
             <Route path="achievements"element={<AdminAchievements />} />
             <Route path="socials"     element={<AdminSocials />} />
             <Route path="messages"    element={<AdminMessages />} />
+            <Route path="settings"    element={<AdminSettings />} />
           </Routes>
         </main>
       </div>
