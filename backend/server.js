@@ -69,6 +69,36 @@ app.use((req, res) =>
 // Global error handler
 app.use(errorHandler)
 
+// ── Production startup safety checks ──────────────
+// Refuses to boot in production with placeholder/default credentials
+// so a mis-deploy can never expose a publicly-known admin login.
+const checkProductionSecurity = () => {
+  if (process.env.NODE_ENV !== 'production') return
+
+  const secret = process.env.JWT_SECRET || ''
+  const INSECURE_SECRETS = [
+    '',
+    'replace_with_a_very_long_random_secret_string_at_least_64_chars',
+  ]
+  if (INSECURE_SECRETS.includes(secret) || secret.length < 32) {
+    console.error('FATAL: Set a strong JWT_SECRET (32+ random chars) in production. Refusing to start.')
+    process.exit(1)
+  }
+
+  const adminPassword = process.env.ADMIN_PASSWORD || ''
+  const INSECURE_PASSWORDS = ['', 'Admin@123']
+  if (INSECURE_PASSWORDS.includes(adminPassword)) {
+    console.error('FATAL: Set a strong ADMIN_PASSWORD in production. Refusing to start.')
+    process.exit(1)
+  }
+  if (!process.env.FRONTEND_URL || process.env.FRONTEND_URL.includes('localhost')) {
+    console.error('FATAL: Set FRONTEND_URL to your production frontend URL. Refusing to start.')
+    process.exit(1)
+  }
+}
+
+checkProductionSecurity()
+
 // ── Seed admin on first run ───────────────────────────
 const seedAdmin = async () => {
   try {
