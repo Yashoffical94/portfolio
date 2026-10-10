@@ -50,14 +50,75 @@ export default function Navbar() {
   }
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled
-          ? 'bg-space-900/90 backdrop-blur-md border-b border-white/5 shadow-lg'
-          : 'bg-transparent'
-      )}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Floating glass pill wrapper — appears when scrolled */}
+      <div
+        className={cn(
+          'section-container flex justify-center pt-3 transition-all duration-500',
+          scrolled ? 'opacity-100 translate-y-0' : 'pointer-events-none -translate-y-2 opacity-0'
+        )}
+        aria-hidden={!scrolled}
+      >
+        <nav
+          className="glass-navbar rounded-full h-14 flex items-center px-5 w-max max-w-full mx-4"
+        >
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
+            <div className="relative">
+              <Logo size={30} className="rounded-lg group-hover:shadow-orange-md transition-all duration-300" />
+              <div className="absolute inset-0 rounded-lg bg-orange-500/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+            <span className="font-bold text-white text-base tracking-tight hidden sm:inline">
+              Portfolio<span className="text-orange-500">.</span>
+            </span>
+          </Link>
+
+          {/* Desktop navigation */}
+          <ul className="hidden lg:flex items-center gap-1 ml-4">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  to={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className={cn(
+                    'nav-link px-3.5 py-2 rounded-full text-sm',
+                    isActive(link.href) && 'bg-orange-500/15 active'
+                  )}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA + mobile toggle */}
+          <div className="flex items-center gap-2.5 ml-auto flex-shrink-0">
+            <Link
+              to="/#contact"
+              onClick={() => handleNavClick('/#contact')}
+              className="btn-primary text-sm px-4 py-2 gap-1.5 hidden md:inline-flex"
+            >
+              <Zap size={14} />
+              Hire Me
+            </Link>
+            <button
+              onClick={() => setIsOpen((o) => !o)}
+              aria-label="Toggle menu"
+              className="lg:hidden p-2 rounded-full text-slate-300 hover:text-white glass-chip transition-colors"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      {/* Original nav — fades out when glass pill takes over */}
+      <div
+        className={cn(
+          'transition-all duration-500',
+          scrolled ? 'pointer-events-none opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+        )}
+      >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-18">
 
@@ -109,6 +170,7 @@ export default function Navbar() {
             </button>
           </div>
         </nav>
+      </div>
       </div>
 
       {/* Mobile menu */}

@@ -33,7 +33,7 @@ export default function ProjectDetail() {
     <MainLayout>
       <div className="min-h-screen flex flex-col items-center justify-center gap-4">
         <h2 className="text-2xl font-bold text-white">Project Not Found</h2>
-        <Link to="/#projects" className="btn-primary">Back to Projects</Link>
+        <Link to="/#projects" className="btn-primary glass-sheen">Back to Projects</Link>
       </div>
     </MainLayout>
   )
@@ -76,12 +76,12 @@ export default function ProjectDetail() {
             </div>
             <div className="flex gap-3 flex-wrap">
               {project.githubUrl && (
-                <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn-secondary text-sm px-4 py-2.5">
+                <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn-secondary glass-sheen text-sm px-4 py-2.5">
                   <Github size={16} /> GitHub
                 </a>
               )}
               {project.demoUrl && (
-                <a href={project.demoUrl} target="_blank" rel="noreferrer" className="btn-primary text-sm px-4 py-2.5">
+                <a href={project.demoUrl} target="_blank" rel="noreferrer" className="btn-primary glass-sheen text-sm px-4 py-2.5">
                   <ExternalLink size={16} /> Live Demo
                 </a>
               )}
@@ -179,8 +179,8 @@ export default function ProjectDetail() {
 
           {/* CTA */}
           <div className="pt-10 border-t border-white/5 flex flex-wrap gap-4">
-            <Link to="/#projects" className="btn-secondary text-sm"><ArrowLeft size={15}/> All Projects</Link>
-            <Link to="/#contact"  className="btn-primary text-sm">Discuss This Project</Link>
+            <Link to="/#projects" className="btn-secondary glass-sheen text-sm"><ArrowLeft size={15}/> All Projects</Link>
+            <Link to="/#contact"  className="btn-primary glass-sheen text-sm">Discuss This Project</Link>
           </div>
         </div>
       </motion.div>

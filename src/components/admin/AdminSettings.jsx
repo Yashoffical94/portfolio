@@ -107,7 +107,7 @@ export default function AdminSettings() {
             name="confirm" type="password" value={form.confirm}
             onChange={ch} className="field-input" autoComplete="new-password"
           />
-          {mismatch && <p className="text-xs text-red-400 mt-1.5">Passwords don't match</p>}
+          {mismatch && <p className="text-xs text-red-400 mt-1.5">Passwords don&apos;t match</p>}
         </div>
 
         <button type="submit" disabled={!canSubmit || saving}

@@ -71,16 +71,16 @@ export default function Contact() {
             <div className="space-y-4">
               {profile?.email && (
                 <a href={`mailto:${profile.email}`} className="flex items-center gap-3 text-slate-400 hover:text-orange-400 transition-colors group">
-                  <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-orange-500/20 transition-colors">
-                    <Mail size={16} className="text-orange-400" />
+                  <div className="glass-chip w-10 h-10 border border-orange-500/20 text-orange-400 flex-shrink-0 group-hover:border-orange-500/40">
+                    <Mail size={16} />
                   </div>
                   <span className="text-sm">{profile.email}</span>
                 </a>
               )}
               {profile?.location && (
                 <div className="flex items-center gap-3 text-slate-400">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0">
-                    <MapPin size={16} className="text-slate-500" />
+                  <div className="glass-chip w-10 h-10 border border-white/10 flex-shrink-0">
+                    <MapPin size={16} />
                   </div>
                   <span className="text-sm">{profile.location}</span>
                 </div>
@@ -97,7 +97,7 @@ export default function Contact() {
                   if (!Icon) return null
                   return (
                     <a key={s._id} href={s.url} target="_blank" rel="noreferrer"
-                      className="p-2.5 rounded-xl glass border border-white/5 text-slate-500 hover:text-orange-400 hover:border-orange-500/20 transition-all duration-200">
+                      className="glass-chip w-10 h-10 border border-white/10">
                       <Icon size={18} />
                     </a>
                   )
@@ -126,7 +126,7 @@ export default function Contact() {
                 </div>
                 <h3 className="text-xl font-bold text-white">Message Sent!</h3>
                 <p className="text-slate-400 text-sm">Thanks for reaching out. I&apos;ll get back to you soon.</p>
-                <button onClick={() => setStatus(null)} className="btn-secondary text-sm px-5 py-2">Send Another</button>
+                <button onClick={() => setStatus(null)} className="btn-secondary glass-sheen text-sm px-5 py-2">Send Another</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="card p-6 md:p-8 space-y-5">
@@ -163,7 +163,7 @@ export default function Contact() {
                   </div>
                 )}
 
-                <button type="submit" disabled={status === 'loading'} className="btn-primary w-full justify-center py-3.5 disabled:opacity-60 disabled:cursor-not-allowed">
+                <button type="submit" disabled={status === 'loading'} className="btn-primary glass-sheen w-full justify-center py-3.5 disabled:opacity-60 disabled:cursor-not-allowed">
                   {status === 'loading' ? (
                     <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Sending...</>
                   ) : (

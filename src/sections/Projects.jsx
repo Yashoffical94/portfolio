@@ -53,11 +53,11 @@ function ProjectCard({ project, index, onOpen }) {
         )}
         {/* Hover overlay */}
         <div className={`absolute inset-0 bg-space-900/60 flex items-center justify-center gap-3 transition-opacity duration-300 ${hovered ? 'opacity-100' : 'opacity-0'}`}>
-          <a href={project.githubUrl} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} className="p-2.5 rounded-xl glass border border-white/10 text-white hover:text-orange-400 transition-colors">
+          <a href={project.githubUrl} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} className="glass-chip w-10 h-10 border border-white/15">
             <Github size={18} />
           </a>
           {project.demoUrl && (
-            <a href={project.demoUrl} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} className="p-2.5 rounded-xl glass border border-white/10 text-white hover:text-orange-400 transition-colors">
+            <a href={project.demoUrl} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()} className="glass-chip w-10 h-10 border border-white/15">
               <ExternalLink size={18} />
             </a>
           )}
@@ -141,12 +141,12 @@ function ProjectModal({ project, onClose }) {
 
             <div className="flex gap-3 pt-2">
               {project.githubUrl && (
-                <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn-secondary flex-1 justify-center text-sm py-2.5">
+                <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn-secondary glass-sheen flex-1 justify-center text-sm py-2.5">
                   <Github size={16} /> GitHub
                 </a>
               )}
               {project.demoUrl && (
-                <a href={project.demoUrl} target="_blank" rel="noreferrer" className="btn-primary flex-1 justify-center text-sm py-2.5">
+                <a href={project.demoUrl} target="_blank" rel="noreferrer" className="btn-primary glass-sheen flex-1 justify-center text-sm py-2.5">
                   <ExternalLink size={16} /> Live Demo
                 </a>
               )}
