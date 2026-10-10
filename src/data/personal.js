@@ -1,9 +1,9 @@
 export const personalInfo = {
-  name: 'Your Name',
+  name: 'Yash X',
   title: 'Full-Stack Developer',
-  email: 'your.email@example.com',
-  github: 'https://github.com/yourusername',
-  linkedin: 'https://linkedin.com/in/yourusername',
+  email: 'Yash94x@gmail.com',
+  github: 'https://github.com/YashOffical94',
+  linkedin: 'https://linkedin.com/in/yash-kumar-4a6313387',
   twitter: 'https://twitter.com/yourusername',
   bio: 'Passionate developer who loves building beautiful, performant web applications. I specialize in React, Node.js, and modern cloud infrastructure.',
   location: 'Your City, Country',
